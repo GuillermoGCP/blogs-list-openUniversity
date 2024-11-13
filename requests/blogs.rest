@@ -1,0 +1,15 @@
+### Get blogs
+GET http://localhost:3001/api/blogs
+
+
+### Add new blog:
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Maina",
+    "author": "Guillermo Cerviño Porto",
+    "url": "https://mainagastronomia.es/",
+    "likes": 22
+}
+

@@ -1,1 +1,1 @@
-#blogs-list-openUniversity
+#blogs-list-open-university

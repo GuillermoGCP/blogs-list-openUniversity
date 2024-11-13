@@ -10,6 +10,6 @@ Content-Type: application/json
     "title": "Maina",
     "author": "Guillermo Cerviño Porto",
     "url": "https://mainagastronomia.es/",
-    "likes": 22
+    "likes": 23
 }
 

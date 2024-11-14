@@ -9,5 +9,10 @@ const dummy = (blogs) => {
   }
   return 2
 }
-
-module.exports = { dummy }
+const totalLikes = (blogs) => {
+  const sum = blogs.reduce((acc, iter) => {
+    return (acc += iter.likes)
+  }, 0)
+  return sum
+}
+module.exports = { dummy, totalLikes }

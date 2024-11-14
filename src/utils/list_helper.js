@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const dummy = (blogs) => {
   if (Array.isArray(blogs)) {
     if (
@@ -27,4 +29,23 @@ const favoriteBlog = (blogs) => {
   }, {})
 }
 
-module.exports = { dummy, totalLikes, favoriteBlog }
+//Using Lodash:
+function mostBlogs(blogs) {
+  if (!Array.isArray(blogs) || blogs.length === 0) return null
+
+  const groupedByAuthor = _.groupBy(blogs, 'author')
+
+  const blogsCount = _.map(
+    _.toPairs(groupedByAuthor),
+    ([author, blogsList]) => ({
+      author: author,
+      blogs: blogsList.length,
+    })
+  )
+
+  const authorWithMostBlogs = _.maxBy(blogsCount, 'blogs')
+
+  return authorWithMostBlogs
+}
+
+module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs }

@@ -102,7 +102,7 @@ describe('total likes', () => {
 describe('favorite blog', () => {
   test('of an empty list is null', () => {
     const result = listHelper.favoriteBlog([])
-    assert.deepStrictEqual(
+    assert.equal(
       result,
       null,
       'Expected favorite blog to be null for an empty list'
@@ -124,6 +124,35 @@ describe('favorite blog', () => {
       result._id,
       '5a422b3a1b54a676234d17f9',
       'Expected favorite blog id is not 5a422b3a1b54a676234d17f9'
+    )
+  })
+})
+
+describe('most blogs', () => {
+  test('of an empty list is null', () => {
+    const result = listHelper.mostBlogs([])
+    assert.strictEqual(
+      result,
+      null,
+      'Expected number of blogs to be null for an empty list'
+    )
+  })
+
+  test('when list has only one blog, returns blog itself', () => {
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    assert.deepStrictEqual(
+      result.blogs,
+      1,
+      'Expected number of blogs to be 1 for a single blog list'
+    )
+  })
+
+  test('of a bigger list is the one with the most blogs', () => {
+    const result = listHelper.mostBlogs(bigList)
+    assert.strictEqual(
+      result.blogs,
+      3,
+      'Expected number of blogs to be 3 for the given list'
     )
   })
 })

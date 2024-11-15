@@ -1,8 +1,7 @@
 const Blog = require('../db/models/Blog.js')
-const getBlogs = (request, response) => {
-  Blog.find({}).then((blogs) => {
-    response.json(blogs)
-  })
+const getBlogs = async (request, response) => {
+  const dataFromDb = await Blog.find({})
+  response.json(dataFromDb)
 }
 
 module.exports = getBlogs

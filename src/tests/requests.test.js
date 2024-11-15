@@ -11,11 +11,7 @@ const api = supertest(app)
 describe('requests', () => {
   beforeEach(async () => {
     await Blog.deleteMany({})
-    const promisesArray = data.bigList.map((blog) => {
-      const blogToSave = new Blog(blog)
-      return blogToSave.save()
-    })
-    await Promise.all(promisesArray)
+    await Blog.insertMany(data.bigList)
   })
 
   test('blogs are returned as json', async () => {
@@ -30,9 +26,16 @@ describe('requests', () => {
 
     assert.strictEqual(
       response.body.length,
-      6,
+      data.bigList.length,
       'Expected the number of blogs to be six'
     )
+  })
+
+  test('id property verification', async () => {
+    const response = await api.get('/api/blogs')
+    response.body.forEach((blog) => {
+      assert.ok(blog.hasOwnProperty('id'))
+    })
   })
 })
 after(async () => {

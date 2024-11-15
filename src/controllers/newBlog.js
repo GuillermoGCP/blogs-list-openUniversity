@@ -1,10 +1,8 @@
 const Blog = require('../db/models/Blog.js')
-const newBlog = (request, response) => {
+const newBlog = async (request, response) => {
   const blog = new Blog(request.body)
-
-  blog.save().then((result) => {
-    response.status(201).json(result)
-  })
+  const result = await blog.save()
+  response.status(201).json(result)
 }
 
 module.exports = newBlog

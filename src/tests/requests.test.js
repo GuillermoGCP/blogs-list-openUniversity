@@ -5,6 +5,7 @@ const data = require('./dataToTest.js')
 const app = require('../../index.js')
 const Blog = require('../db/models/Blog.js')
 const mongoose = require('mongoose')
+const invalidIdGenerator = require('../utils/invalidIdGenerator.js')
 
 const api = supertest(app)
 
@@ -113,7 +114,44 @@ describe('blogs requests', () => {
       'Expected id value of the deleted blog to be undefined'
     )
   })
+
+  test('a blog is updated correctly and returns 200 OK status', async () => {
+    const response = await api
+      .put(`/api/blogs/${data.bigList[0]._id.toString()}`)
+      .send({ likes: 20 })
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    assert.deepStrictEqual(
+      response.body.likes,
+      20,
+      'Expected likes value to be twenty'
+    )
+    assert.deepStrictEqual(
+      response.body.title,
+      'React patterns',
+      'Expected title value to the given'
+    )
+    assert.deepStrictEqual(
+      response.body.author,
+      'Michael Chan',
+      'Expected title value to the given'
+    )
+    assert.deepStrictEqual(
+      response.body.url,
+      'https://reactpatterns.com/',
+      'Expected url value to the given'
+    )
+  })
+
+  test('an invalid blog id is sent and returns 404 Not Found status', async () => {
+    const nonExistingId = await invalidIdGenerator()
+
+    await api.put(`/api/blogs/${nonExistingId}`).expect(404)
+    await api.delete(`/api/blogs/${nonExistingId}`).expect(404)
+  })
 })
+
 after(async () => {
   await mongoose.connection.close()
 })

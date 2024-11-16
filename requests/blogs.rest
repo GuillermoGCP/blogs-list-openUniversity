@@ -10,8 +10,16 @@ Content-Type: application/json
     "title": "Maina",
     "author": "Guillermo Cerviño Porto",
     "url": "https://mainagastronomia.es/",
-    "likes": 23
+    "likes": 0
 }
 
 ### Delete blog:
 DELETE http://localhost:3001/api/blogs/6738ec21af719e7c7bdbbeff
+
+### AUpdate blog:
+PUT http://localhost:3001/api/blogs/6738f4b239a8ddfd4823647e
+Content-Type: application/json
+
+{
+    "likes": 23
+}

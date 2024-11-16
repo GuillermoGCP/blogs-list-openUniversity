@@ -99,6 +99,20 @@ describe('blogs requests', () => {
       'Expected title value to be undefined'
     )
   })
+
+  test('a blog is deleted and returns 204 No Content status', async () => {
+    await api.delete(`/api/blogs/${data.bigList[0]._id.toString()}`).expect(204)
+
+    const response = await Blog.findById({
+      _id: data.bigList[0]._id.toString(),
+    })
+
+    assert.deepStrictEqual(
+      response?.id,
+      undefined,
+      'Expected id value of the deleted blog to be undefined'
+    )
+  })
 })
 after(async () => {
   await mongoose.connection.close()

@@ -62,6 +62,25 @@ describe('requests', () => {
     const addedBlog = response.body.find((blog) => blog.title === newBlog.title)
     assert.ok(addedBlog, 'The blog has not been added to the database')
   })
+
+  test('a blog submitted without the Like property will default to Like: 0', async () => {
+    const newBlog = {
+      title: 'New blog',
+      author: 'New author',
+      url: 'https://newblog.com',
+    }
+    const response = await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    assert.deepStrictEqual(
+      response.body.likes,
+      0,
+      'Expected likes value to be zero'
+    )
+  })
 })
 after(async () => {
   await mongoose.connection.close()

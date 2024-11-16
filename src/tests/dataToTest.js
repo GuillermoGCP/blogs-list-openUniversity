@@ -59,4 +59,37 @@ const bigList = [
     __v: 0,
   },
 ]
-module.exports = { listWithOneBlog, bigList }
+
+const blogWithoutLikes = {
+  title: 'New blog',
+  author: 'New author',
+  url: 'https://newblog.com',
+}
+
+const blogWithoutUrl = {
+  title: 'New blog',
+  author: 'New author',
+  likes: 33,
+}
+
+const blogWithoutTitle = {
+  url: 'https://newblog.com',
+  author: 'New author',
+  likes: 33,
+}
+
+const newBlog = {
+  title: 'New blog',
+  author: 'New author',
+  url: 'https://newblog.com',
+  likes: 0,
+}
+
+module.exports = {
+  listWithOneBlog,
+  bigList,
+  newBlog,
+  blogWithoutUrl,
+  blogWithoutTitle,
+  blogWithoutLikes,
+}

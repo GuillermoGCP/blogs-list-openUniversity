@@ -1,11 +1,19 @@
-const HandleError = (error, req, res, next) => {
+const HandleError = (error, request, response, next) => {
   if (error.name === 'ValidationError') {
-    return res.status(400).json({
+    return response.status(400).json({
       error: error.message,
     })
+  } else if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } else if (
+    error.name === 'MongoServerError' &&
+    error.message.includes('E11000 duplicate key error')
+  ) {
+    return response
+      .status(400)
+      .json({ error: 'expected `username` to be unique' })
   }
-
-  return res.json({ error: error.message })
+  return response.json({ error: error.message })
 }
 
 module.exports = HandleError

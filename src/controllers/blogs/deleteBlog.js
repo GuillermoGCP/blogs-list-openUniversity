@@ -1,4 +1,4 @@
-const Blog = require('../db/models/Blog.js')
+const Blog = require('../../db/models/Blog.js')
 
 const deleteBlog = async (req, res, next) => {
   const blog = await Blog.findById(req.params.id)

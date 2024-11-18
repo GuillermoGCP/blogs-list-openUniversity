@@ -1,2 +1,3 @@
 const blogsRoutes = require('./blogsRoutes.js')
-module.exports = { blogsRoutes }
+const userRoutes = require('./userRoutes.js')
+module.exports = { blogsRoutes, userRoutes }

@@ -7,7 +7,7 @@ POST http://localhost:3001/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Maina",
+    
     "author": "Guillermo Cerviño Porto",
     "url": "https://mainagastronomia.es/",
     "likes": 0
@@ -17,7 +17,7 @@ Content-Type: application/json
 DELETE http://localhost:3001/api/blogs/6738ec21af719e7c7bdbbeff
 
 ### AUpdate blog:
-PUT http://localhost:3001/api/blogs/6738f4b239a8ddfd4823647e
+PUT http://localhost:3001/api/blogs/6738f4b239a8ddfd482364!!
 Content-Type: application/json
 
 {

@@ -1,4 +1,4 @@
-const Blog = require('../db/models/Blog.js')
+const Blog = require('../../db/models/Blog.js')
 
 const updateBlog = async (req, res) => {
   const blog = await Blog.findById(req.params.id)

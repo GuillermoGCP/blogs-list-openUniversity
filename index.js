@@ -4,7 +4,7 @@ const cors = require('cors')
 const connectDb = require('./src/db/config.js')
 const logger = require('./src/utils/logger.js')
 const envVars = require('./src/utils/environmentsVars.js')
-const { blogsRoutes } = require('./src/routes/index.js')
+const { blogsRoutes, userRoutes } = require('./src/routes/index.js')
 const handleError = require('./src/middlewares/handleError.js')
 
 const app = express()
@@ -15,6 +15,7 @@ connectDb(envVars.MONGO_URI)
 
 //Routes:
 app.use(blogsRoutes)
+app.use(userRoutes)
 
 // Error handling middleware
 app.use(handleError)

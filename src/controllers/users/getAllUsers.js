@@ -1,6 +1,6 @@
 const User = require('../../db/models/User.js')
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (_req, res) => {
   const allUsers = await User.find({}).populate('blogs', {
     title: 1,
     url: 1,

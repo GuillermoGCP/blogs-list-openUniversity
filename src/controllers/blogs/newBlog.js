@@ -14,7 +14,7 @@ const newBlog = async (request, response) => {
   firstFindedUser.blogs = [...firstFindedUser.blogs, savedBlog._id]
   const mongoResponse = await firstFindedUser.save()
   if (!mongoResponse) {
-    await blog.remove()
+    await savedBlog.delete()
     return generateError('Failed to save user', 500)
   }
 

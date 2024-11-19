@@ -13,7 +13,7 @@ const HandleError = (error, request, response, next) => {
       .status(400)
       .json({ error: 'expected `username` to be unique' })
   }
-  return response.json({ error: error.message })
+  return response.status(error.status || 500).json({ error: error.message })
 }
 
 module.exports = HandleError

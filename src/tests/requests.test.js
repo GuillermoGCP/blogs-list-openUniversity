@@ -4,6 +4,7 @@ const supertest = require('supertest')
 const data = require('./dataToTest.js')
 const app = require('../../index.js')
 const Blog = require('../db/models/Blog.js')
+const User = require('../db/models/User.js')
 const mongoose = require('mongoose')
 const invalidIdGenerator = require('../utils/invalidIdGenerator.js')
 
@@ -49,7 +50,7 @@ describe('blogs requests', () => {
 
     const response = await api.get('/api/blogs')
 
-    assert.strictEqual(
+    assert.deepStrictEqual(
       response.body.length,
       data.bigList.length + 1,
       'The number of blogs in the database was expected to be equal to the number of blogs in bigList plus one'
@@ -82,12 +83,12 @@ describe('blogs requests', () => {
       .expect('Content-Type', /application\/json/)
 
     assert.deepStrictEqual(
-      response.body.url,
-      undefined,
-      'Expected url value to be undefined'
+      response.body.error,
+      'Blog validation failed: url: Path `url` is required.',
+      'Expected error message to indicate that URL is required'
     )
   })
-  test('a blog submitted without  title property will response with a 400 Bad Request status', async () => {
+  test('a blog submitted without title property will response with a 400 Bad Request status', async () => {
     const response = await api
       .post('/api/blogs')
       .send(data.blogWithoutTitle)
@@ -95,9 +96,9 @@ describe('blogs requests', () => {
       .expect('Content-Type', /application\/json/)
 
     assert.deepStrictEqual(
-      response.body.url,
-      undefined,
-      'Expected title value to be undefined'
+      response.body.error,
+      'Blog validation failed: title: Path `title` is required.',
+      'Expected error message to indicate that title is required'
     )
   })
 
@@ -109,9 +110,9 @@ describe('blogs requests', () => {
     })
 
     assert.deepStrictEqual(
-      response?.id,
-      undefined,
-      'Expected id value of the deleted blog to be undefined'
+      response,
+      null,
+      'Expected response value of the deleted blog to be null'
     )
   })
 
@@ -152,6 +153,112 @@ describe('blogs requests', () => {
   })
 })
 
+//Users:
+describe('users requests', () => {
+  beforeEach(async () => {
+    await User.deleteMany({})
+    await User.insertMany(data.manyUsers)
+  })
+
+  test('users are returned as json', async () => {
+    const response = await api
+      .get('/api/users')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+    assert.ok(Array.isArray(response.body), 'Response must be an array')
+  })
+
+  test('all users are returned', async () => {
+    const response = await api.get('/api/users')
+
+    assert.strictEqual(
+      response.body.length,
+      data.manyUsers.length,
+      'Expected the number of users to be two'
+    )
+  })
+
+  test('id property verification', async () => {
+    const response = await api.get('/api/users')
+    response.body.forEach((user) => {
+      assert.ok(user.hasOwnProperty('id'))
+    })
+  })
+
+  test('a valid user is added', async () => {
+    await api
+      .post('/api/users')
+      .send(data.newUser)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    const response = await api.get('/api/users')
+
+    assert.strictEqual(
+      response.body.length,
+      data.manyUsers.length + 1,
+      'The number of users in the database was expected to be equal to the number of users in manyUsers plus one'
+    )
+
+    const addedUser = response.body.find(
+      (user) => user.username === data.newUser.username
+    )
+    assert.ok(addedUser, 'The user has not been added to the database')
+  })
+
+  test('a user submitted without username property will response with a 400 Bad Request status', async () => {
+    const response = await api
+      .post('/api/users')
+      .send(data.newUserWithOutUsername)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+
+    assert.deepStrictEqual(
+      response.body.error,
+      'User validation failed: username: Path `username` is required.',
+      'Expected error message to indicate that username is required'
+    )
+  })
+
+  test('a user submitted without password property will response with a 400 Bad Request status', async () => {
+    const response = await api
+      .post('/api/users')
+      .send(data.newUserWithOutPassword)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+    assert.deepStrictEqual(
+      response.body.error,
+      'Password is required',
+      'Expected error message to indicate that password is required'
+    )
+  })
+
+  test('If a password of less than three characters is sent, it will respond with a 400 Bad Request status', async () => {
+    const response = await api
+      .post('/api/users')
+      .send(data.newUserWithOutShortPass)
+      .expect(400)
+      .expect('Content-Type', /application\/json/)
+    assert.deepStrictEqual(
+      response.body.error,
+      'Password must be at least 3 characters long',
+      'Expected error message indicating that the minimum length of a password is three'
+    )
+  })
+
+  test('if a duplicate username is sent it will respond with a 400 Bad Request status', async () => {
+    const response = await api
+      .post('/api/users')
+      .send(data.duplicateUsername)
+      .expect(400)
+
+    assert.deepStrictEqual(
+      response.body.error,
+      'expected `username` to be unique',
+      'Expected error message indicating that the username already exists'
+    )
+  })
+})
 after(async () => {
   await mongoose.connection.close()
 })

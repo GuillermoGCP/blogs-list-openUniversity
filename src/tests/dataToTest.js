@@ -1,3 +1,5 @@
+//Blogs:
+
 const listWithOneBlog = [
   {
     _id: '5a422aa71b54a676234d17f8',
@@ -85,6 +87,42 @@ const newBlog = {
   likes: 0,
 }
 
+//Users:
+
+const manyUsers = [
+  {
+    username: 'Notario',
+    name: 'Andrés Calamaro',
+    passwordHash:
+      '$2a$10$2DqcDWKZHZz92gAZGjFJKO8Gyxkac1234r.zVDnisH8ijcVQmCPOK',
+  },
+  {
+    username: 'CrazyDev',
+    name: 'Guille Cervi',
+    passwordHash:
+      '$2a$10$2DqcDWKZHZz92gAZGjFJKO8Gyxkac1325r.zVDnisH8ijcVQmCPOK',
+  },
+]
+
+const newUser = {
+  username: 'New',
+  name: 'Sofía Loren',
+  password: '3444efds!',
+}
+const newUserWithOutUsername = { name: 'Nadie', password: 'NotelaDiré' }
+const newUserWithOutPassword = { username: 'Another', name: 'Day-in-paradise' }
+
+const newUserWithOutShortPass = {
+  username: 'Another2',
+  name: 'Paquita',
+  password: 'ee',
+}
+const duplicateUsername = {
+  username: 'Notario',
+  name: 'Secret',
+  password: 'Micasanoesunacasa',
+}
+
 module.exports = {
   listWithOneBlog,
   bigList,
@@ -92,4 +130,10 @@ module.exports = {
   blogWithoutUrl,
   blogWithoutTitle,
   blogWithoutLikes,
+  manyUsers,
+  newUser,
+  newUserWithOutUsername,
+  newUserWithOutPassword,
+  newUserWithOutShortPass,
+  duplicateUsername,
 }

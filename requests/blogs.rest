@@ -8,9 +8,10 @@ Content-Type: application/json
 
 {
     
-    "author": "Guillermo Cerviño Porto",
-    "url": "https://mainagastronomia.es/",
-    "likes": 0
+    "author": "Guillermo Cerviño",
+    "url": "https://mainagastronomia34.es/",
+    "title": "El mundo de la gastronomía",
+    "likes": 32
 }
 
 ### Delete blog:

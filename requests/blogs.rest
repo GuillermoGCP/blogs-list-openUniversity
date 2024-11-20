@@ -9,10 +9,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkVzY
 
 {
     
-    "author": "Juanito Navarro",
-    "url": "https://ejemplo33.es/",
+    "author": "Pepe Viyuela",
+    "url": "https://ejemplo44.es/",
     "title": "No veas",
-    "likes": 343
+    "likes": 31
 }
 
 ### Delete blog:

@@ -3,7 +3,7 @@ const User = require('../../db/models/User.js')
 const generateError = require('../../utils/generateError.js')
 
 const newBlog = async (request, response) => {
-  const userId = request.auth.id
+  const userId = request.user.id
   const blogOwner = await User.findById(userId)
   if (!blogOwner) {
     return generateError('User not found in the database', 404)

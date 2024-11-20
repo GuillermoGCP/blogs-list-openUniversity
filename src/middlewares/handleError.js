@@ -1,3 +1,5 @@
+const logger = require('../utils/logger.js')
+
 const HandleError = (error, request, response, next) => {
   if (error.name === 'ValidationError') {
     return response.status(400).json({
@@ -15,6 +17,7 @@ const HandleError = (error, request, response, next) => {
   } else if (error.name === 'JsonWebTokenError') {
     return response.status(401).json({ error: 'token invalid' })
   }
+
   return response.status(error.status || 500).json({ error: error.message })
 }
 

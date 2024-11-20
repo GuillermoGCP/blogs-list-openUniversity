@@ -5,13 +5,14 @@ GET http://localhost:3001/api/blogs
 ### Add new blog:
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5vdGFyaW8iLCJpZCI6IjY3M2RkOWZhZDA4MGNlNGY3YjQ1NDAzNSIsImlhdCI6MTczMjEyNzQ1MX0._o95rzfSxleNfLjf40jLL505e0HHKpdu5yFxMi9rpys
 
 {
     
-    "author": "Guillermo Cerviño",
-    "url": "https://mainagastronomia34.es/",
-    "title": "El mundo de la gastronomía",
-    "likes": 32
+    "author": "Samuel Perez",
+    "url": "https://unacualquiera.es/",
+    "title": "Un título insulso",
+    "likes": 16
 }
 
 ### Delete blog:

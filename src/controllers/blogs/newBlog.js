@@ -3,16 +3,17 @@ const User = require('../../db/models/User.js')
 const generateError = require('../../utils/generateError.js')
 
 const newBlog = async (request, response) => {
-  const firstFindedUser = await User.findOne()
-  if (!firstFindedUser) {
-    return generateError('No users found in the database', 404)
+  const userId = request.auth.id
+  const blogOwner = await User.findById(userId)
+  if (!blogOwner) {
+    return generateError('User not found in the database', 404)
   }
 
-  const blog = new Blog({ ...request.body, user: firstFindedUser._id })
+  const blog = new Blog({ ...request.body, user: blogOwner._id })
   const savedBlog = await blog.save()
 
-  firstFindedUser.blogs = [...firstFindedUser.blogs, savedBlog._id]
-  const mongoResponse = await firstFindedUser.save()
+  blogOwner.blogs = [...blogOwner.blogs, savedBlog._id]
+  const mongoResponse = await blogOwner.save()
   if (!mongoResponse) {
     await savedBlog.delete()
     return generateError('Failed to save user', 500)

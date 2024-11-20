@@ -6,6 +6,7 @@ const logger = require('./src/utils/logger.js')
 const envVars = require('./src/utils/environmentsVars.js')
 const { blogsRoutes, userRoutes } = require('./src/routes/index.js')
 const handleError = require('./src/middlewares/handleError.js')
+const getTokenFrom = require('./src/middlewares/getTokenFrom.js')
 
 const app = express()
 

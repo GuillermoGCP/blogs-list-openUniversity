@@ -6,6 +6,8 @@ const updateBlog = require('./blogs/updateBlog.js')
 const createUser = require('./users/createUser.js')
 const getAllUsers = require('./users/getAllUsers.js')
 
+const login = require('./users/login.js')
+
 module.exports = {
   getBlogs,
   newBlog,
@@ -13,4 +15,5 @@ module.exports = {
   updateBlog,
   createUser,
   getAllUsers,
+  login,
 }

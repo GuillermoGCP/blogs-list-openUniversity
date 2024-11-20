@@ -6,9 +6,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "Secretario",
-    "name": "Mono saltarín",
-    "password": "unadetrásdeotra"
+  "username": "New",
+  "name": "Sofía Loren",
+  "password": "3444efds!"
 }
 
 ###Login:
@@ -16,7 +16,8 @@ POST http://localhost:3001/api/users/login
 Content-Type: application/json
 
 {
-    "username": "Secretario",
-    "password": "unadetrásdeotra"
+  "username": "New",
+  "password": "3444efds!"
 }
+
 

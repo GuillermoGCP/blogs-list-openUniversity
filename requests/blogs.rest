@@ -5,18 +5,19 @@ GET http://localhost:3001/api/blogs
 ### Add new blog:
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlY3JldGFyaW8iLCJpZCI6IjY3M2UzMGYyYWIyNmVjYTU1NmM0ZGRhYyIsImlhdCI6MTczMjEyOTAyNn0.-_cwfA3bTG6XKCOG8GG2f_LzWeGbyQCLNjcwabZB6r8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkVzY3JpYmEiLCJpZCI6IjY3M2UzNDI4YzA3MDE2M2IxNTdmNmVlNiIsImlhdCI6MTczMjEyOTg4NX0.m67JX9D8DMrnxSQ3cm5Ge6WimfTEzDTa_Vh8jBljVYQ
 
 {
     
-    "author": "Marcos Suarez",
-    "url": "https://ejemplo.es/",
-    "title": "Ya te digo",
-    "likes": 3
+    "author": "Juanito Navarro",
+    "url": "https://ejemplo33.es/",
+    "title": "No veas",
+    "likes": 343
 }
 
 ### Delete blog:
-DELETE http://localhost:3001/api/blogs/6738ec21af719e7c7bdbbeff
+DELETE http://localhost:3001/api/blogs/673e3111ab26eca556c4ddb0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyIsImlkIjoiNjczZTM2ZDEwZTlhYWE0NTFlNjJkZTVmIiwiaWF0IjoxNzMyMTMwNTMyfQ.df48pjBf3F3QYD7n7BvmZ4BsU02qnQGTJb-ngpFpzhE
 
 ### AUpdate blog:
 PUT http://localhost:3001/api/blogs/6738f4b239a8ddfd482364!!

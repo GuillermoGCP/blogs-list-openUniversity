@@ -12,7 +12,7 @@ const router = express.Router()
 
 router.get('/api/blogs', getBlogs)
 router.post('/api/blogs', validateAuth, newBlog)
-router.delete('/api/blogs/:id', deleteBlog)
+router.delete('/api/blogs/:id', validateAuth, deleteBlog)
 router.put('/api/blogs/:id', updateBlog)
 
 module.exports = router

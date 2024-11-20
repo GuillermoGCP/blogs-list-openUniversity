@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken')
 const generateError = require('../utils/generateError.js')
-const getTokenFrom = require('../middlewares/getTokenFrom.js')
 
 const validateAuth = (req, _res, next) => {
-  const token = getTokenFrom(req)
+  const token = req.token
 
   if (!token) {
     generateError('Authorization is required', 401)

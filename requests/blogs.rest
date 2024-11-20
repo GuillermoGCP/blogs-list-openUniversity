@@ -5,14 +5,14 @@ GET http://localhost:3001/api/blogs
 ### Add new blog:
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5vdGFyaW8iLCJpZCI6IjY3M2RkOWZhZDA4MGNlNGY3YjQ1NDAzNSIsImlhdCI6MTczMjEyNzQ1MX0._o95rzfSxleNfLjf40jLL505e0HHKpdu5yFxMi9rpys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlY3JldGFyaW8iLCJpZCI6IjY3M2UzMGYyYWIyNmVjYTU1NmM0ZGRhYyIsImlhdCI6MTczMjEyOTAyNn0.-_cwfA3bTG6XKCOG8GG2f_LzWeGbyQCLNjcwabZB6r8
 
 {
     
-    "author": "Samuel Perez",
-    "url": "https://unacualquiera.es/",
-    "title": "Un título insulso",
-    "likes": 16
+    "author": "Marcos Suarez",
+    "url": "https://ejemplo.es/",
+    "title": "Ya te digo",
+    "likes": 3
 }
 
 ### Delete blog:

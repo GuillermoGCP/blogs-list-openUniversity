@@ -6,9 +6,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "Notario",
-    "name": "Andrés Calamaro",
-    "password": "Laquesea"
+    "username": "Secretario",
+    "name": "Mono saltarín",
+    "password": "unadetrásdeotra"
 }
 
 ###Login:
@@ -16,7 +16,7 @@ POST http://localhost:3001/api/users/login
 Content-Type: application/json
 
 {
-    "username": "Notario",
-    "password": "Laquesea"
+    "username": "Secretario",
+    "password": "unadetrásdeotra"
 }
 

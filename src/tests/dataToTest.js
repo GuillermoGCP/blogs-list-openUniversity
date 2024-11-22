@@ -81,6 +81,7 @@ const blogWithoutTitle = {
 }
 
 const newBlog = {
+  _id: '5a422ba71b54a612344d17fb',
   title: 'New blog',
   author: 'New author',
   url: 'https://newblog.com',
@@ -109,6 +110,7 @@ const newUser = {
   name: 'Sofía Loren',
   password: '3444efds!',
 }
+
 const newUserWithOutUsername = { name: 'Nadie', password: 'NotelaDiré' }
 const newUserWithOutPassword = { username: 'Another', name: 'Day-in-paradise' }
 

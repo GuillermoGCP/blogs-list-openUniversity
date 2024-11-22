@@ -1,4 +1,7 @@
 const _ = require('lodash')
+const bcrypt = require('bcryptjs')
+const data = require('../tests/dataToTest.js')
+const User = require('../db/models/User.js')
 
 const dummy = (blogs) => {
   if (Array.isArray(blogs)) {
@@ -58,4 +61,23 @@ const mostLikes = (blogs) => {
   return authorWithMostLikes
 }
 
-module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs, mostLikes }
+const createUser = async (userData = data.newUser) => {
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword = bcrypt.hashSync(userData.password, salt)
+  const user = new User({
+    username: userData.username,
+    name: userData.name,
+    passwordHash: hashedPassword,
+  })
+  const createdUser = await user.save()
+  return createdUser
+}
+
+module.exports = {
+  dummy,
+  totalLikes,
+  favoriteBlog,
+  mostBlogs,
+  mostLikes,
+  createUser,
+}

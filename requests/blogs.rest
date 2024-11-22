@@ -5,11 +5,11 @@ GET http://localhost:3001/api/blogs
 ### Add new blog:
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkVzY3JpYmEiLCJpZCI6IjY3M2UzNDI4YzA3MDE2M2IxNTdmNmVlNiIsImlhdCI6MTczMjEyOTg4NX0.m67JX9D8DMrnxSQ3cm5Ge6WimfTEzDTa_Vh8jBljVYQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyIsImlkIjoiNjczZTM2ZDEwZTlhYWE0NTFlNjJkZTVmIiwiaWF0IjoxNzMyMjk1OTYyfQ._oY32k5fR4bID9pRtOoom1QeuTZGwoC28SYz0b4HFOg
 
 {
     
-    "author": "Pepe Viyuela",
+    "author": "Pepe Viyuela22",
     "url": "https://ejemplo44.es/",
     "title": "No veas",
     "likes": 31
@@ -20,9 +20,10 @@ DELETE http://localhost:3001/api/blogs/673e3111ab26eca556c4ddb0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyIsImlkIjoiNjczZTM2ZDEwZTlhYWE0NTFlNjJkZTVmIiwiaWF0IjoxNzMyMTMwNTMyfQ.df48pjBf3F3QYD7n7BvmZ4BsU02qnQGTJb-ngpFpzhE
 
 ### AUpdate blog:
-PUT http://localhost:3001/api/blogs/6738f4b239a8ddfd482364!!
+PUT http://localhost:3001/api/blogs/6740bd46d599ae1fcf56b4e0
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik5ldyIsImlkIjoiNjczZTM2ZDEwZTlhYWE0NTFlNjJkZTVmIiwiaWF0IjoxNzMyMjk1OTYyfQ._oY32k5fR4bID9pRtOoom1QeuTZGwoC28SYz0b4HFOg
 
 {
-    "likes": 23
+    "likes": 43
 }

@@ -6,6 +6,7 @@ const {
   newBlog,
   deleteBlog,
   updateBlog,
+  addLikeToBlog,
 } = require('../controllers/index.js')
 
 const router = express.Router()
@@ -13,6 +14,7 @@ const router = express.Router()
 router.get('/', getBlogs)
 router.post('/', validateAuth, newBlog)
 router.delete('/:id', validateAuth, deleteBlog)
-router.put('/:id', updateBlog)
+router.put('/:id', validateAuth, updateBlog)
+router.patch('/likes/:id', addLikeToBlog)
 
 module.exports = router

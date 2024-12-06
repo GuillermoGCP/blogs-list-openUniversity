@@ -9,6 +9,8 @@ const getAllUsers = require('./users/getAllUsers.js')
 
 const login = require('./users/login.js')
 
+const resetDb = require('./users/testingRoutes/resetDb.js')
+
 module.exports = {
   getBlogs,
   newBlog,
@@ -18,4 +20,5 @@ module.exports = {
   createUser,
   getAllUsers,
   login,
+  resetDb,
 }

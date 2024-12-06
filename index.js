@@ -4,7 +4,11 @@ const cors = require('cors')
 const connectDb = require('./src/db/config.js')
 const logger = require('./src/utils/logger.js')
 const envVars = require('./src/utils/environmentsVars.js')
-const { blogsRoutes, userRoutes } = require('./src/routes/index.js')
+const {
+  blogsRoutes,
+  userRoutes,
+  testingRoutes,
+} = require('./src/routes/index.js')
 const {
   handleError,
   tokenExtractor,
@@ -23,6 +27,7 @@ app.use(tokenExtractor)
 //Routes:
 app.use('/api/blogs', userExtractor, blogsRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/testing', testingRoutes)
 
 // Error handling middleware
 app.use(handleError)

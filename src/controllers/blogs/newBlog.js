@@ -4,6 +4,12 @@ const generateError = require('../../utils/generateError.js')
 
 const newBlog = async (request, response) => {
   const userId = request.user.id
+  if (!userId) {
+    return generateError(
+      'User is not authenticated or the token has expired ',
+      401
+    )
+  }
   const blogOwner = await User.findById(userId)
   if (!blogOwner) {
     return generateError('User not found in the database', 404)

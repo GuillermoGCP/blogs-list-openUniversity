@@ -25,7 +25,19 @@ const newBlog = async (request, response) => {
     return generateError('Failed to save user', 500)
   }
 
-  response.status(201).json(savedBlog)
+  const blogToSend = {
+    title: savedBlog.title,
+    author: savedBlog.author,
+    url: savedBlog.url,
+    likes: savedBlog.likes,
+    id: savedBlog._id.toString(),
+    user: {
+      id: savedBlog.user.toString(),
+      name: blogOwner.name,
+      username: blogOwner.username,
+    },
+  }
+  response.status(201).json(blogToSend)
 }
 
 module.exports = newBlog
